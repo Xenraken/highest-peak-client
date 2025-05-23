@@ -1,9 +1,9 @@
-import './SearchBarStyle.css';
+import './search-bar-style.css';
 
 function SearchBar()
 {
     return (
-        <div className="searchBarStyle">
+        <div className="search-bar-style">
             <input type="text" placeholder="Search..." />
         </div>
     )

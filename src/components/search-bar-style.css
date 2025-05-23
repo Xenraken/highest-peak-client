@@ -1,4 +1,4 @@
-.searchBarStyle
+.search-bar-style
 {
   display: flex;
   justify-content: center;
@@ -6,7 +6,7 @@
 }
 
 
-.searchBarStyle input {
+.search-bar-style input {
   width: 400px;
   padding: 10px 16px;
   border: 1px solid #ccc;
@@ -17,7 +17,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.searchBarStyle input:focus {
+.search-bar-style input:focus {
   border-color: #0077ff;
   box-shadow: 0 2px 8px rgba(0, 119, 255, 0.3);
 }
