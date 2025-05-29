@@ -13,14 +13,16 @@ function Home()
             <Link to="/" style={{
                 position: "absolute", top: "-8px", left: "20px", margin: 0, textDecoration: "none", color: "White"
             }}> <h1>Highest Peak</h1></Link>
-            
+
             <Bar />
 
             <div className={styles["button-container"]}>
                 <Link to="/signup">
-                <ButtonCreate className="button" text="Signup" />
+                    <ButtonCreate className="button" text="Signup" />
                 </Link>
+                <Link to="/Login">
                 <ButtonCreate className="button" text="Login" />
+                </Link>
             </div>
 
             <div className={styles["video-container"]}>
