@@ -27,13 +27,13 @@ function SignupPage()
             const data = await res.json();
             if (res.status === 201)
             {
-                console.log("Signing up is successful", data);
+                console.log("Signup successful", data);
                 setSignupSuccess(true);
             }
             else 
             {
-                alert("Signup failed.");
-
+                console.log("Signup unsuccessful", data)
+                alert(data.message);
             }
         }
         catch (error)
@@ -44,9 +44,14 @@ function SignupPage()
 
     return (
         <div>
-            <Link to="/" style={{
-                position: "absolute", top: "-8px", left: "20px", margin: 0, textDecoration: "none", color: "White"
-            }}> <h1>Highest Peak</h1></Link>
+            <Link
+                to="/"
+                style={{
+                    position: "absolute", top: "-8px", left: "20px", margin: 0, textDecoration: "none", color: "White"
+                }}
+            >
+                <h1>Highest Peak</h1>
+            </Link>
 
             {!signupSuccess && (
                 <div className={styles['signup-container']}>
@@ -69,20 +74,7 @@ function SignupPage()
                     <p style={{ color: "#4CAF50", fontSize: "20px", marginBottom: "10px" }}>
                         Success!
                     </p>
-                    <button
-                        onClick={() => navigate("/login")}
-                        style={{
-                            padding: "10px 20px",
-                            backgroundColor: "rgb(108, 99, 111)",
-                            color: "white",
-                            border: "none",
-                            borderRadius: "5px",
-                            cursor: "pointer",
-                            fontSize: "16px"
-                        }}
-                    >
-                        Click to Login
-                    </button>
+                    <ButtonCreate className="button" onClick={() => navigate("/login")} text="Click to Login" />
                 </div>
             )}
         </div>

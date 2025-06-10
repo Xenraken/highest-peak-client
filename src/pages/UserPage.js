@@ -4,21 +4,33 @@ import PlaceholderVideo from "../components/PlaceholderVideo"
 import styles from './home.module.css';
 import ButtonCreate from "../components/ButtonCreate";
 import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 
-
-
-function Home()
+function UserPage() 
 {
     const { user, setUser } = useAuth();
-    const navigate = useNavigate();
-
+    const { id } = useParams();
     const handleLogout = () =>
     {
         setUser(null);
         navigate("/");
     };
+    
+    const [userProfile, setUserProfile] = useState(null);
+    const navigate = useNavigate();
+
+    useEffect(() => 
+        {
+          (async function userFetch() 
+            {
+                const res = await fetch(`http://localhost:5000/users?id=${id}&`);
+                const data = await res.json();
+                setUserProfile(data);
+            })();
+        }, [id]);
 
     return (
         <div>
@@ -72,10 +84,8 @@ function Home()
                 <PlaceholderVideo />
                 <PlaceholderVideo />
             </div>
-
-
         </div >)
 }
 
 
-export default Home;
+export default UserPage;

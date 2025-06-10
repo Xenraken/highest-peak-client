@@ -6,18 +6,23 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import About from './components/About';
 import SignupPage from "./pages/SignupPage";
 import LoginPage from './pages/LoginPage';
+import { AuthProvider } from './contexts/AuthContext';
+import UserPage from './pages/UserPage';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/login" element={<LoginPage />} />
-
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/user/:id" element={<UserPage />}/>
+        </Routes> 
+      </BrowserRouter>
+    </AuthProvider>
   </React.StrictMode>
 );

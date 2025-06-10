@@ -2,12 +2,17 @@ import styles from './login-page.module.css';
 import { Link } from "react-router-dom";
 import ButtonCreate from "../components/ButtonCreate";
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+
 
 function LoginPage() 
 {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+    const { setUser } = useAuth();
 
     function loginHandle()
     {
@@ -18,16 +23,30 @@ function LoginPage()
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ email, password })
-
                 }
-            ).then(res => res.json()).then(data => console.log("Login is successful", data)).catch(error => console.log("Fetch error:", error));
+            ).then(res =>
+            {
+                res.json()
+                    .then(data => 
+                    {
+                        if (res.status === 200) 
+                        {
+                            console.log("Login successful", data)
+                            setUser({ name: data.name, id: data.id})
+                            navigate("/")
+                        }
+                        else 
+                        {
+                            console.log("Login unsuccessful", data)
+                            alert(data.message)
+                        }
+                    })
+            }).catch(error => { console.log("Fetch error:", error) });
         }
         catch (error)
         {
             console.log("Error during loginHandle", error);
-
         }
-
     }
 
     return (
