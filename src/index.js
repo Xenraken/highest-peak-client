@@ -8,6 +8,8 @@ import SignupPage from "./pages/SignupPage";
 import LoginPage from './pages/LoginPage';
 import { AuthProvider } from './contexts/AuthContext';
 import UserPage from './pages/UserPage';
+import WatchPage from './pages/WatchPage';
+import Layout from './components/Layout';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,12 +18,15 @@ root.render(
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/user/:id" element={<UserPage />}/>
-        </Routes> 
+          <Route path="/" element={<Layout />}>
+            <Route path="/" element={<App />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/user/:id" element={<UserPage />} />
+            <Route path="/watch/:fileName" element={<WatchPage />} />
+          </Route>
+        </Routes>
       </BrowserRouter>
     </AuthProvider>
   </React.StrictMode>

@@ -1,8 +1,8 @@
 
 
-function PlaceholderText() 
+function PlaceholderText({ title }) 
 {
-    return (<p style={{ textAlign: "center" }}>Video here</p>);
+    return (<p style={{ textAlign: "center" }}>{title}</p>);
 }
 
 export default PlaceholderText;
