@@ -6,7 +6,7 @@ function SearchBar()
         <div className="search-bar-style">
             <input type="text" placeholder="Search..." />
         </div>
-    )
+    );
 }
 
 export default SearchBar;

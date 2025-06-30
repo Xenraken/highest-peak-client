@@ -10,6 +10,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import UserPage from './pages/UserPage';
 import WatchPage from './pages/WatchPage';
 import Layout from './components/Layout';
+import UploadPage from './pages/UploadPage';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -25,6 +26,8 @@ root.render(
             <Route path="/login" element={<LoginPage />} />
             <Route path="/user/:id" element={<UserPage />} />
             <Route path="/watch/:fileName" element={<WatchPage />} />
+            <Route path="/upload" element={<UploadPage />} />
+
           </Route>
         </Routes>
       </BrowserRouter>
