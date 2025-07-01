@@ -6,45 +6,37 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 
-function LoginPage() 
-{
+function LoginPage() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     const { setUser } = useAuth();
 
-    function loginHandle()
-    {
-        try
-        {
+    function loginHandle() {
+        try {
             fetch("http://localhost:5000/auth/login",
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ email, password })
                 }
-            ).then(res =>
-            {
+            ).then(res => {
                 res.json()
-                    .then(data => 
-                    {
-                        if (res.status === 200) 
-                        {
+                    .then(data => {
+                        if (res.status === 200) {
                             console.log("Login successful", data)
-                            setUser({ name: data.name, id: data.id})
+                            setUser({ name: data.name, id: data.id, token: data.token })
                             navigate("/")
                         }
-                        else 
-                        {
+                        else {
                             console.log("Login unsuccessful", data)
                             alert(data.message)
                         }
                     })
             }).catch(error => { console.log("Fetch error:", error) });
         }
-        catch (error)
-        {
+        catch (error) {
             console.log("Error during loginHandle", error);
         }
     }

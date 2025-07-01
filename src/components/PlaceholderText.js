@@ -1,7 +1,6 @@
 
 
-function PlaceholderText({ title }) 
-{
+function PlaceholderText({ title }) {
     return (<p style={{ textAlign: "center" }}>{title}</p>);
 }
 

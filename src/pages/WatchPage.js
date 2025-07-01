@@ -2,18 +2,15 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 
-function WatchPage() 
-{
+function WatchPage() {
     const { fileName } = useParams();
     const videoUrl = `http://localhost:5000/videos/${fileName}`;
 
     const [videoData, setVideoData] = useState(null);
 
 
-    useEffect(() =>
-    {
-        (async function videoWatchFetch() 
-        {
+    useEffect(() => {
+        (async function videoWatchFetch() {
             const videoResponse = await fetch(`http://localhost:5000/videos/data/${fileName}`);
             const videoDataRes = await videoResponse.json();
             console.log("videodata here:", videoDataRes);

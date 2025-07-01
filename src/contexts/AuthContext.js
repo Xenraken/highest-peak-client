@@ -3,8 +3,7 @@ import { createContext, useState, useContext } from "react";
 
 const AuthContext = createContext();
 
-function AuthProvider(props) 
-{
+function AuthProvider(props) {
     const [user, setUser] = useState(null);
 
     return (<AuthContext.Provider value={{ user, setUser }}>
@@ -12,13 +11,11 @@ function AuthProvider(props)
     </AuthContext.Provider>);
 }
 
-function useAuth() 
-{
+function useAuth() {
     return useContext(AuthContext);
 }
 
-export
-{
+export {
     AuthProvider,
     useAuth
 };

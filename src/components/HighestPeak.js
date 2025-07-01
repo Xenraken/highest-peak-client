@@ -1,8 +1,7 @@
 
 
 
-function HighestPeak() 
-{
+function HighestPeak() {
     return (
         <div>
             <h1>

@@ -8,11 +8,12 @@
   box-sizing: border-box;
 }
 
-.video-container > * {
+.video-container>* {
   flex: 1 1 calc(25% - 10px);
   max-width: calc(25% - 10px);
   height: 240px;
 }
+
 .button-container {
   position: fixed;
   top: 15px;

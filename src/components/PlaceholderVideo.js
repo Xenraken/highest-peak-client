@@ -3,12 +3,10 @@ import PlaceholderText from "./PlaceholderText";
 import { useNavigate } from "react-router";
 
 
-function PlaceholderVideo({ title, description, fileName })
-{
+function PlaceholderVideo({ title, description, fileName }) {
     const navigate = useNavigate();
 
-    function handleClick() 
-    {
+    function handleClick() {
         navigate(`/watch/${fileName}`, {
             state: { title, description }
         });

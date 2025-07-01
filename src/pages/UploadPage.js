@@ -4,27 +4,22 @@ import styles from './login-page.module.css';
 import ButtonCreate from "../components/ButtonCreate";
 
 
-function UploadPage() 
-{
+function UploadPage() {
     const { user } = useAuth();
     const [title, setTittle] = useState();
     const [description, setDescription] = useState();
     const [videoFile, setVideoFile] = useState(null);
 
-    if (!user)
-    {
+    if (!user) {
         return <div style={{ color: "white", fontSize: "18px" }}>You must be logged in to upload a video.</div>;
     }
 
-    function handleVideoUpload(e)
-    {
+    function handleVideoUpload(e) {
         setVideoFile(e.target.files[0]);
     }
 
-    function uploadHandle()
-    {
-        if (!videoFile)
-        {
+    function uploadHandle() {
+        if (!videoFile) {
             alert("Please select a video file");
             return;
         }

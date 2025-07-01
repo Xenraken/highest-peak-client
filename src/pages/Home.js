@@ -6,14 +6,11 @@ import { useParams } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 
-function Home()
-{
+function Home() {
     const [allVideos, setAllVideos] = useState(null);
 
-    useEffect(() =>
-    {
-        (async function allVideosFetch()
-        {
+    useEffect(() => {
+        (async function allVideosFetch() {
             const videosRes = await fetch("http://localhost:5000/videos");
             const videosData = await videosRes.json();
             console.log(videosData);
@@ -26,8 +23,7 @@ function Home()
             <div className={styles["video-container"]}>
                 {
                     allVideos ? (
-                        allVideos.map((video) => 
-                        {
+                        allVideos.map((video) => {
                             return (< PlaceholderVideo
                                 key={video.id}
                                 title={video.title}

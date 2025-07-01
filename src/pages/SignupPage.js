@@ -4,8 +4,7 @@ import ButtonCreate from "../components/ButtonCreate";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
-function SignupPage() 
-{
+function SignupPage() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -13,10 +12,8 @@ function SignupPage()
     const navigate = useNavigate();
 
 
-    const signupHandle = async () => 
-    {
-        try
-        {
+    const signupHandle = async () => {
+        try {
             const res = await fetch("http://localhost:5000/auth/signup",
                 {
                     method: "POST",
@@ -25,19 +22,16 @@ function SignupPage()
                 }
             )
             const data = await res.json();
-            if (res.status === 201)
-            {
+            if (res.status === 201) {
                 console.log("Signup successful", data);
                 setSignupSuccess(true);
             }
-            else 
-            {
+            else {
                 console.log("Signup unsuccessful", data)
                 alert(data.message);
             }
         }
-        catch (error)
-        {
+        catch (error) {
             console.log("Error during signupHandle", error);
         }
     }

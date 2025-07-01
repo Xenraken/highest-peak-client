@@ -6,14 +6,12 @@ import { useAuth } from "../contexts/AuthContext";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 
 
-function Layout()
-{
+function Layout() {
 
     const { user, setUser } = useAuth();
     const navigate = useNavigate();
 
-    const handleLogout = () =>
-    {
+    const handleLogout = () => {
         setUser(null);
         navigate("/");
     };
