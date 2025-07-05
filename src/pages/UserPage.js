@@ -1,19 +1,23 @@
+import ButtonCreate from "../components/ButtonCreate";
 import PlaceholderVideo from "../components/PlaceholderVideo"
+import { useAuth } from "../contexts/AuthContext";
 import styles from './home.module.css';
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 function UserPage() {
     const { id } = useParams();
-
     const [userProfile, setUserProfile] = useState(null);
     const [userVideos, setUserVideos] = useState(null);
+    const { user } = useAuth();
 
     useEffect(() => {
         (async function userFetch() {
             const userRes = await fetch(`http://localhost:5000/users?id=${id}&`);
             const userData = await userRes.json();
+            console.log("userdata here", userData); //delete later
             setUserProfile(userData.users[0]);
         })();
 
@@ -24,7 +28,6 @@ function UserPage() {
             console.log(userVideosData);
         })();
     }, [id]);
-
     return (
         <div>
             <div>
@@ -36,6 +39,20 @@ function UserPage() {
                     <p>User loading...</p>
                 )}
             </div>
+
+            <div style={{
+                position: 'absolute',
+                top: '100px',
+                right: '20px',
+                zIndex: 10
+            }}>
+                {user && (
+                    <Link to="/upload">
+                        <ButtonCreate className="button" text="Upload Video" />
+                    </Link>
+                )}
+            </div>
+
             <div className={styles["video-container"]}>
                 {userVideos ? (
                     userVideos.map((video) => (

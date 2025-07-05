@@ -8,11 +8,11 @@ import { Outlet, Link, useNavigate } from "react-router-dom";
 
 function Layout() {
 
-    const { user, setUser } = useAuth();
+    const { user, logout } = useAuth();
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        setUser(null);
+        logout();
         navigate("/");
     };
 

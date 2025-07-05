@@ -11,7 +11,7 @@ function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const { setUser } = useAuth();
+    const { login } = useAuth();
 
     function loginHandle() {
         try {
@@ -26,7 +26,7 @@ function LoginPage() {
                     .then(data => {
                         if (res.status === 200) {
                             console.log("Login successful", data)
-                            setUser({ name: data.name, id: data.id, token: data.token })
+                            login(data);
                             navigate("/")
                         }
                         else {
@@ -48,7 +48,7 @@ function LoginPage() {
             }}> <h1>Highest Peak</h1></Link>
             <div className={styles['signup-container']}>
                 <input type="text" placeholder="Email" value={email} onChange={(e) => { setEmail(e.target.value) }} />
-                <input type="text" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
+                <input type="password" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
                 <div className={styles["button-container"]}>
                     <ButtonCreate className="button" onClick={loginHandle} text="Login" />
                 </div>
