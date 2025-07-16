@@ -2,6 +2,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import ButtonCreate from "../components/ButtonCreate";
+import { Link } from "react-router-dom";
+
 
 
 function WatchPage() {
@@ -59,7 +61,10 @@ function WatchPage() {
                 <source src={videoUrl} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
-
+            {videoData &&
+                <Link to={`/user/${videoData.user_id}`} >
+                    <h1>{videoData.user_name}</h1>
+                </Link>}
             {videoData && <p>{videoData.description}</p>}
 
             <div>
@@ -68,6 +73,5 @@ function WatchPage() {
 
         </div >)
 }
-
 
 export default WatchPage;
