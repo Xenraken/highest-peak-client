@@ -61,6 +61,7 @@ function UserPage() {
                             title={video.title}
                             description={video.description}
                             fileName={video.file_name}
+                            thumbnailFileName={video.thumbnail_path}
                         />
                     ))
                 ) : (
