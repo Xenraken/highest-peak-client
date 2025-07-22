@@ -13,6 +13,7 @@ function UploadPage() {
     const [videoFile, setVideoFile] = useState(null);
     const navigate = useNavigate();
     const [isUploading, setIsUploading] = useState(false);
+    const [thumbnailFile, setThumbnailFile] = useState(null);
 
     if (!user) {
         return <div style={{ color: "white", fontSize: "18px" }}>You must be logged in to upload a video.</div>;
@@ -20,6 +21,10 @@ function UploadPage() {
 
     function handleVideoUpload(e) {
         setVideoFile(e.target.files[0]);
+    }
+
+    function handleThumbnailUpload(e) {
+        setThumbnailFile(e.target.files[0]);
     }
 
     async function uploadHandle() {
@@ -34,6 +39,9 @@ function UploadPage() {
             formData.append("title", title);
             formData.append("description", description);
             formData.append("video", videoFile);
+            if (thumbnailFile) {
+                formData.append("thumbnail", thumbnailFile);
+            }
 
             const response = await fetch("http://localhost:5000/videos/upload", {
                 method: "POST",
@@ -66,6 +74,7 @@ function UploadPage() {
             </div>
             <div className={styles["button-container"]}>
                 <input type="file" accept="video/*" onChange={handleVideoUpload} />
+                <input type="file" accept="image/*" onChange={handleThumbnailUpload} />
                 <ButtonCreate className="button" onClick={uploadHandle} text={isUploading ? "Uploading..." : "Upload Video"} />
             </div>
         </div>
