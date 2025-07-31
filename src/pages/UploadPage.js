@@ -60,7 +60,7 @@ function UploadPage() {
         }
         catch (error) {
             console.error("Error during video upload", error);
-            alert(`Error during video upload: ${error.message}`);
+            return alert(`Error during video upload: ${error.message}`);
         }
         console.log("Video uploaded successfully", title);
         alert("Video uploaded successfully",)
