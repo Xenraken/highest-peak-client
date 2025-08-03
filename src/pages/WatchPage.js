@@ -5,7 +5,6 @@ import ButtonCreate from "../components/ButtonCreate";
 import { Link } from "react-router-dom";
 
 
-
 function WatchPage() {
     const { user } = useAuth();
     const { fileName } = useParams();
@@ -69,8 +68,11 @@ function WatchPage() {
         }
         return alert("Comment successful");
     }
+
     useEffect(() => {
-        if (!videoData?.id) return;
+        if (!videoData?.id) {
+            return;
+        }
 
         async function handleGetComments() {
             try {
@@ -101,6 +103,16 @@ function WatchPage() {
         })()
     }, [fileName]);
 
+    // update view count
+    useEffect(() => {
+        if (!videoData || !videoData.id) {
+            return;
+        }
+        fetch(`http://localhost:5000/videos/viewupdate/${videoData.id}`, {
+            method: 'PATCH'
+        })
+    }, [videoData])
+
     useEffect(() => {
         console.log("Video data here:", videoData);
 
@@ -108,18 +120,23 @@ function WatchPage() {
 
     return (
         <div>
-            <h2>{videoData?.title || "Loading..."}</h2>
+            <div>
+                <h2>{videoData?.title || "Loading..."}</h2>
 
-            <video width="720" height="480" controls>
-                <source src={videoUrl} type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
-            {videoData &&
-                <Link to={`/user/${videoData.user_id}`} >
-                    <h1>{videoData.user_name}</h1>
-                </Link>}
-            {videoData && <p>{videoData.description}</p>}
+                <video width="720" height="480" controls>
+                    <source src={videoUrl} type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                {videoData &&
+                    <Link to={`/user/${videoData.user_id}`} >
+                        <h1>{videoData.user_name}</h1>
+                    </Link>}
+                {videoData && <p>{videoData.description}</p>}
+                {videoData && <p>{videoData.views} views</p>}
+                {videoData && <p>{videoData.upload_date}</p>}
 
+
+            </div>
             <div>
                 {user && videoData && user.id === videoData.user_id && (<ButtonCreate className="button" onClick={handleVideoDelete} text={isDeleting ? "Deleting Video..." : "Delete This Video"} />)}
             </div>
@@ -137,8 +154,6 @@ function WatchPage() {
                 <ButtonCreate className="button" onClick={handleMakeComment} text="Make a comment" />
             </div>
 
-
-
             <div>
                 {videoComments?.comments.map((comment) => {
                     return (
@@ -146,8 +161,8 @@ function WatchPage() {
                             <Link to={`/user/${comment.user_id}`} >
                                 <h5>{comment.user_name}:</h5>
                             </Link>
-
                             <p>{comment.comment}</p>
+                            <p>{comment.upload_date}</p>
                         </div>
                     );
                 })}

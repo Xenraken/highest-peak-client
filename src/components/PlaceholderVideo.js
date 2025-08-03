@@ -3,7 +3,7 @@ import PlaceholderText from "./PlaceholderText";
 import { useNavigate } from "react-router";
 
 
-function PlaceholderVideo({ title, description, fileName, thumbnailFileName }) {
+function PlaceholderVideo({ title, userId, userName, views, description, fileName, uploadDate, thumbnailFileName }) {
     const navigate = useNavigate();
     const thumbnailUrl = `http://localhost:5000/${thumbnailFileName}`;
     function handleClick() {
@@ -36,8 +36,15 @@ function PlaceholderVideo({ title, description, fileName, thumbnailFileName }) {
                     <PlaceholderBox />
                 )
             }
+
             <div style={{ marginTop: "-8px" }}>
-                <PlaceholderText title={title} />
+                <PlaceholderText
+                    userId={userId}
+                    ownerName={userName}
+                    title={title}
+                    views={views}
+                    uploadDate={uploadDate}
+                />
             </div>
         </div>);
 }

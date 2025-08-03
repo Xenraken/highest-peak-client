@@ -58,9 +58,13 @@ function UserPage() {
                     userVideos.map((video) => (
                         <PlaceholderVideo
                             key={video.id}
+                            userId={video.user_id}
+                            userName={video.user_name}
                             title={video.title}
+                            views={video.views}
                             description={video.description}
                             fileName={video.file_name}
+                            uploadDate={video.upload_date}
                             thumbnailFileName={video.thumbnail_path}
                         />
                     ))

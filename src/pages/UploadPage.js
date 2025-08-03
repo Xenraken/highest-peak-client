@@ -35,7 +35,8 @@ function UploadPage() {
             }
             setIsUploading(true);
             const formData = new FormData();
-            formData.append("user_id", user.id)
+            formData.append("user_id", user.id);
+            formData.append("user_name", user.name);
             formData.append("title", title);
             formData.append("description", description);
             formData.append("video", videoFile);

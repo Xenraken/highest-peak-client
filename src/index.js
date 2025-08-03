@@ -15,22 +15,22 @@ import UploadPage from './pages/UploadPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route path="/" element={<App />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/signup" element={<SignupPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/user/:id" element={<UserPage />} />
-            <Route path="/watch/:fileName" element={<WatchPage />} />
-            <Route path="/upload" element={<UploadPage />} />
+  //<React.StrictMode>
+  <AuthProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/" element={<App />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/user/:id" element={<UserPage />} />
+          <Route path="/watch/:fileName" element={<WatchPage />} />
+          <Route path="/upload" element={<UploadPage />} />
 
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
-  </React.StrictMode>
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </AuthProvider>
+  //</React.StrictMode>
 );

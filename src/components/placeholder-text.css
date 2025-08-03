@@ -1,0 +1,28 @@
+.placeholder-container {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.placeholder-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.placeholder-owner {
+  margin-bottom: 4px;
+}
+
+.placeholder-link {
+  text-decoration: none;
+  color: #3366cc;
+}
+
+.placeholder-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666;
+}
