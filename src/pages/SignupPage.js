@@ -1,4 +1,3 @@
-import styles from './signup-page.module.css';
 import { Link } from "react-router-dom";
 import ButtonCreate from "../components/ButtonCreate";
 import { useState } from "react";
@@ -37,40 +36,55 @@ function SignupPage() {
     }
 
     return (
-        <div>
-            <Link
-                to="/"
-                style={{
-                    position: "absolute", top: "-8px", left: "20px", margin: 0, textDecoration: "none", color: "White"
-                }}
-            >
-                <h1>Highest Peak</h1>
-            </Link>
-
-            {!signupSuccess && (
-                <div className={styles['signup-container']}>
-                    <input type="text" placeholder="Name" value={name} onChange={(e) => { setName(e.target.value) }} />
-                    <input type="text" placeholder="Email" value={email} onChange={(e) => { setEmail(e.target.value) }} />
-                    <input type="text" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
-                    <div className={styles["button-container"]}>
-                        <ButtonCreate className="button" onClick={signupHandle} text="Submit" />
+        <div className="min-h-screen bg-gray-900">
+            <div className="flex flex-col items-center justify-center min-h-screen px-6">
+                {!signupSuccess ? (
+                    <div className="bg-gray-800 p-8 rounded-lg shadow-xl w-full max-w-md">
+                        <div className="text-center mb-6">
+                            <Link
+                                to="/"
+                                className="text-white text-2xl font-bold hover:text-blue-400 transition-colors duration-200 no-underline"
+                            >
+                                <h1>Highest Peak</h1>
+                            </Link>
+                        </div>
+                        <h2 className="text-2xl font-bold text-white mb-6 text-center">Create Account</h2>
+                        <div className="space-y-4">
+                            <input
+                                type="text"
+                                placeholder="Name"
+                                value={name}
+                                onChange={(e) => { setName(e.target.value) }}
+                                className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                            />
+                            <input
+                                type="email"
+                                placeholder="Email"
+                                value={email}
+                                onChange={(e) => { setEmail(e.target.value) }}
+                                className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                            />
+                            <input
+                                type="password"
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e) => { setPassword(e.target.value) }}
+                                className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                            />
+                            <div className="pt-4">
+                                <ButtonCreate className="button" onClick={signupHandle} text="Submit" />
+                            </div>
+                        </div>
                     </div>
-                </div>
-            )}
-            {signupSuccess && (
-                <div style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    textAlign: 'center',
-                }}>
-                    <p style={{ color: "#4CAF50", fontSize: "20px", marginBottom: "10px" }}>
-                        Success!
-                    </p>
-                    <ButtonCreate className="button" onClick={() => navigate("/login")} text="Click to Login" />
-                </div>
-            )}
+                ) : (
+                    <div className="bg-gray-800 p-8 rounded-lg shadow-xl w-full max-w-md text-center">
+                        <p className="text-green-400 text-xl mb-4 font-semibold">
+                            Success!
+                        </p>
+                        <ButtonCreate className="button" onClick={() => navigate("/login")} text="Click to Login" />
+                    </div>
+                )}
+            </div>
         </div>
     )
 }

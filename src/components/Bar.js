@@ -2,7 +2,9 @@
 
 
 function Bar() {
-    return (<hr style={{ marginTop: "25px", marginBottom: "30px" }} ></hr>)
+    return (
+        <hr className="mt-6 mb-8 border-gray-700" />
+    )
 }
 
 export default Bar;

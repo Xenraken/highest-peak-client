@@ -1,7 +1,5 @@
 import SearchBar from "./SearchBar"
-import Bar from "./Bar"
 import ButtonCreate from "./ButtonCreate";
-import styles from "../pages/home.module.css";
 import { useAuth } from "../contexts/AuthContext";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 
@@ -17,35 +15,48 @@ function Layout() {
     };
 
     return (
-        <div>
-            <div>
-                <SearchBar />
-                <Link to="/" style={{
-                    position: "absolute", top: "-8px", left: "20px", margin: 0, textDecoration: "none", color: "White"
-                }}> <h1>Highest Peak</h1></Link>
-                <Bar />
-            </div>
+        <div className="min-h-screen bg-gray-900 flex flex-col">
+            {/* Header */}
+            <header className="bg-gray-800 shadow-lg border-b border-gray-700">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                    {/* Top Navigation */}
+                    <div className="flex justify-between items-center py-4">
+                        <Link to="/" className="text-white text-xl sm:text-2xl font-bold hover:text-blue-400 transition-colors duration-200 no-underline">
+                            <h1>Highest Peak</h1>
+                        </Link>
 
-            <div className={styles["button-container"]}>
-                {user ? (
-                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "2px" }}>
-                        <Link to={`/user/${user.id}`} style={{ textDecoration: "none" }}>
-                            <span style={{ color: "white", fontSize: "18px", }} >{user.name}</span>
-                        </Link>
-                        <ButtonCreate className="button" text="Logout" onClick={handleLogout} />
+                        <nav className="flex items-center gap-3 sm:gap-4">
+                            {user ? (
+                                <div className="flex items-center gap-3 sm:gap-4">
+                                    <Link to={`/user/${user.id}`} className="text-white text-sm sm:text-lg hover:text-blue-400 transition-colors duration-200 no-underline">
+                                        <span>{user.name}</span>
+                                    </Link>
+                                    <ButtonCreate className="button" text="Logout" onClick={handleLogout} />
+                                </div>
+                            ) : (
+                                <div className="flex gap-2 sm:gap-3">
+                                    <Link to="/signup">
+                                        <ButtonCreate className="button" text="Signup" />
+                                    </Link>
+                                    <Link to="/login">
+                                        <ButtonCreate className="button" text="Login" />
+                                    </Link>
+                                </div>
+                            )}
+                        </nav>
                     </div>
-                ) : (
-                    <>
-                        <Link to="/signup">
-                            <ButtonCreate className="button" text="Signup" />
-                        </Link>
-                        <Link to="/login">
-                            <ButtonCreate className="button" text="Login" />
-                        </Link>
-                    </>
-                )}
-            </div>
-            <Outlet />
+
+                    {/* Search Bar */}
+                    <div className="pb-4">
+                        <SearchBar />
+                    </div>
+                </div>
+            </header>
+
+            {/* Main Content */}
+            <main className="flex-1">
+                <Outlet />
+            </main>
         </div>
     )
 }

@@ -1,6 +1,6 @@
-import styles from './login-page.module.css';
 import { Link } from "react-router-dom";
 import ButtonCreate from "../components/ButtonCreate";
+import FloatingLabelInput from "../components/FloatingLabelInput";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
@@ -42,18 +42,38 @@ function LoginPage() {
     }
 
     return (
-        <div>
-            <Link to="/" style={{
-                position: "absolute", top: "-8px", left: "20px", margin: 0, textDecoration: "none", color: "White"
-            }}> <h1>Highest Peak</h1></Link>
-            <div className={styles['signup-container']}>
-                <input type="text" placeholder="Email" value={email} onChange={(e) => { setEmail(e.target.value) }} />
-                <input type="password" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
-                <div className={styles["button-container"]}>
-                    <ButtonCreate className="button" onClick={loginHandle} text="Login" />
-                </div>
-            </div>
-        </div>
+        <div className="min-h-screen">
+            <div className="flex flex-col items-center justify-center min-h-screen px-6">
+                <div className="bg-gray-600 p-4 rounded-lg shadow-xl" >
+                    <div className="text-center mb-6">
+                        <Link
+                            to="/"
+                            className="text-white text-2xl font-bold hover:text-blue-400 transition-colors duration-200 no-underline"
+                        >
+                        </Link>
+                    </div>
+                    <h2 className="text-2xl font-bold text-white mb-1 text-center">Highest Peak</h2>
+                    <p className="text-white text-center mb-6 text-sm">Sign in to your account to continue</p>
+                    <div className="space-y-7">
+                        <FloatingLabelInput
+                            type="email"
+                            value={email}
+                            onChange={(e) => { setEmail(e.target.value) }}
+                            label="Email"
+                        />
+                        <FloatingLabelInput
+                            type="password"
+                            value={password}
+                            onChange={(e) => { setPassword(e.target.value) }}
+                            label="Password"
+                        />
+                        <div className="pt-4 flex justify-end">
+                            <ButtonCreate className="button" onClick={loginHandle} text="Login" />
+                        </div>
+                    </div>
+                </div >
+            </div >
+        </div >
     )
 }
 

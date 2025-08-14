@@ -15,29 +15,28 @@ function PlaceholderVideo({ title, userId, userName, views, description, fileNam
     return (
         <div
             onClick={handleClick}
-            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#bbb")}
-            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#ccc")}
-            style={{ cursor: "pointer", padding: "10px", backgroundColor: "#ccc", borderRadius: "8px" }}
+            className="group cursor-pointer bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-gray-700 transform hover:scale-105"
         >
-            {
-                thumbnailUrl ? (
-                    <img
-                        src={thumbnailUrl}
-                        alt="Video Thumbnail"
-                        style={{
-                            width: "100%",
-                            maxWidth: "400px",
-                            height: "auto",
-                            borderRadius: "8px",
-                            display: "block"
-                        }}
-                    />
-                ) : (
-                    <PlaceholderBox />
-                )
-            }
+            <div className="relative">
+                {
+                    thumbnailUrl ? (
+                        <img
+                            src={thumbnailUrl}
+                            alt="Video Thumbnail"
+                            className="w-full h-48 object-cover group-hover:brightness-110 transition-all duration-300"
+                        />
+                    ) : (
+                        <div className="w-full h-48 bg-gray-700 flex items-center justify-center">
+                            <PlaceholderBox />
+                        </div>
+                    )
+                }
+                <div className="absolute top-2 right-2 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded">
+                    {views} views
+                </div>
+            </div>
 
-            <div style={{ marginTop: "-8px" }}>
+            <div className="p-4">
                 <PlaceholderText
                     userId={userId}
                     ownerName={userName}

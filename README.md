@@ -1,70 +1,184 @@
-# Getting Started with Create React App
+# 🏔️ Highest Peak - Video Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive video sharing platform built with React and Tailwind CSS. Highest Peak allows users to upload, watch, and share videos with a beautiful, intuitive interface.
 
-## Available Scripts
+## ✨ Features
 
-In the project directory, you can run:
+### 🎥 Video Management
+- **Video Upload**: Drag & drop video uploads with thumbnail generation
+- **Video Playback**: Custom video player with controls
+- **Thumbnail Support**: Automatic thumbnail generation for uploaded videos
+- **Video Grid**: Responsive grid layout for browsing videos
 
-### `npm start`
+### 👤 User System
+- **User Authentication**: Secure login and signup system
+- **User Profiles**: Individual user pages with video collections
+- **User Management**: Context-based authentication state management
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🎨 Modern UI/UX
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Floating Labels**: Animated input fields with smooth transitions
+- **Dark Theme**: Sleek dark interface for optimal viewing experience
+- **Hover Effects**: Interactive elements with smooth animations
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🔍 Search & Navigation
+- **Search Functionality**: Find videos and users quickly
+- **Navigation Bar**: Clean navigation with user status
+- **Routing**: React Router for seamless page transitions
 
-### `npm test`
+## 🚀 Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
+- Backend server running on `http://localhost:5000`
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd highest-peak-client
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Start the development server**
+   ```bash
+   npm start
+   ```
 
-### `npm run eject`
+4. **Open your browser**
+   Navigate to `http://localhost:3000`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🏗️ Project Structure
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+src/
+├── components/          # Reusable UI components
+│   ├── ButtonCreate.js         # Custom button component
+│   ├── FloatingLabelInput.js   # Animated input fields
+│   ├── Layout.js              # Main layout wrapper
+│   ├── PlaceholderBox.js      # Video thumbnail placeholder
+│   ├── PlaceholderText.js     # Video metadata display
+│   ├── PlaceholderVideo.js    # Video card component
+│   ├── SearchBar.js           # Search functionality
+│   └── Bar.js                 # Navigation bar
+├── contexts/           # React contexts
+│   └── AuthContext.js         # Authentication state management
+├── pages/              # Application pages
+│   ├── Home.js                # Main video feed
+│   ├── LoginPage.js           # User authentication
+│   ├── SignupPage.js          # User registration
+│   ├── UploadPage.js          # Video upload interface
+│   ├── UserPage.js            # User profile page
+│   └── WatchPage.js           # Video playback page
+├── App.js              # Main application component
+└── index.js            # Application entry point
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🧩 Key Components
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### FloatingLabelInput
+A reusable input component with animated floating labels that move from the left side to above the input when focused or filled.
 
-## Learn More
+**Features:**
+- Smooth animations with CSS transitions
+- Responsive positioning
+- Support for different input types
+- Consistent styling across the app
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Usage:**
+```jsx
+<FloatingLabelInput
+    type="email"
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+    label="Email"
+/>
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### PlaceholderVideo
+Video card component that displays video thumbnails, metadata, and handles navigation to video pages.
 
-### Code Splitting
+**Features:**
+- Thumbnail display with fallback
+- View count display
+- Hover effects and animations
+- Click navigation to video page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### PlaceholderText
+Displays video metadata including title, owner name, formatted upload date, and view count.
 
-### Analyzing the Bundle Size
+**Features:**
+- Smart date formatting (e.g., "2 hours ago", "3 days ago")
+- Owner name linking to user profiles
+- Responsive text layout
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🎨 Styling
 
-### Making a Progressive Web App
+The project uses **Tailwind CSS** for styling with a custom design system:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **Color Palette**: Dark theme with gray tones and blue accents
+- **Typography**: Clean, readable fonts with proper hierarchy
+- **Spacing**: Consistent spacing using Tailwind's spacing scale
+- **Animations**: Smooth transitions and hover effects
+- **Responsive**: Mobile-first responsive design
 
-### Advanced Configuration
+## 🔧 Available Scripts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- `npm start` - Start development server
+- `npm build` - Build for production
+- `npm test` - Run test suite
+- `npm eject` - Eject from Create React App
 
-### Deployment
+## 🌐 API Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+The frontend communicates with a backend server running on `http://localhost:5000`:
 
-### `npm run build` fails to minify
+- **Authentication**: `/auth/login`, `/auth/signup`
+- **Videos**: `/videos` (GET, POST)
+- **Users**: `/users` (GET)
+- **File Uploads**: Video and thumbnail upload endpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📱 Responsive Design
+
+The application is fully responsive and works on:
+- Mobile devices (320px+)
+- Tablets (768px+)
+- Desktop computers (1024px+)
+- Large screens (1280px+)
+
+## 🚧 Development Notes
+
+- Built with React 19 and modern JavaScript features
+- Uses React Router v7 for navigation
+- Context API for state management
+- Tailwind CSS v4 for styling
+- Component-based architecture for reusability
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🆘 Support
+
+If you encounter any issues or have questions:
+1. Check the existing issues
+2. Create a new issue with detailed information
+3. Contact the development team
+
+---
+
+**Built with ❤️ using React and Tailwind CSS**
